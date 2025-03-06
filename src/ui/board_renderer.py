@@ -1,0 +1,1 @@
+"""Board rendering and visualization.""" 

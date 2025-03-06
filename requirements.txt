@@ -1,0 +1,10 @@
+# Core dependencies 
+numpy 
+torch 
+pytorch-lightning 
+onnx 
+onnxruntime 
+chess 
+fastapi 
+matplotlib 
+pandas 
