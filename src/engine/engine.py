@@ -589,8 +589,18 @@ class BattlefieldChessEngine(ChessEngine):
 # Test code
 if __name__ == "__main__":
     try:
-        # Create a basic chess engine
-        engine = ChessEngine()
+        import os
+        
+        # Get the directory where this script is located
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        # Define path relative to the script location
+        stockfish_exe_path = os.path.join(script_dir, "stockfish", "stockfish-windows-x86-64-avx2.exe")
+        
+        print(f"Looking for Stockfish at: {stockfish_exe_path}")
+        
+        # Create a basic chess engine with the relative path
+        engine = ChessEngine(stockfish_path=stockfish_exe_path)
         
         # Test some basic functionality
         print(f"Legal moves: {engine.get_legal_moves()}")
@@ -608,7 +618,7 @@ if __name__ == "__main__":
         print(f"Position features: {features}")
         
         # Test battlefield extension
-        battlefield = BattlefieldChessEngine()
+        battlefield = BattlefieldChessEngine(stockfish_path=stockfish_exe_path)
         result = battlefield.make_move("e2e4")
         print(f"Battlefield narrative: {result['narrative']}")
         
@@ -617,4 +627,4 @@ if __name__ == "__main__":
         battlefield.close()
         
     except Exception as e:
-        print(f"Error in test: {e}")    
+        print(f"Error in test: {e}")
